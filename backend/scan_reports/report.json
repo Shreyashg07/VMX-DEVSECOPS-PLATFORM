@@ -1,0 +1,157 @@
+{
+  "meta": {
+    "path": "D:\\ai-cicd-security-tool\\backend\\repo"
+  },
+  "findings": [
+    {
+      "detector": "ast_detector",
+      "file": "D:\\ai-cicd-security-tool\\backend\\repo\\app.py",
+      "id": "suspicious_eval_exec",
+      "type": "ast",
+      "score": 6,
+      "description": "Use of exec()"
+    },
+    {
+      "detector": "entropy_detector",
+      "file": "D:\\ai-cicd-security-tool\\backend\\repo\\app.py",
+      "id": "high_entropy",
+      "type": "entropy",
+      "score": 7,
+      "description": "High entropy file (possible encoded/obfuscated payload)",
+      "meta": {
+        "entropy": 5.152025377192021
+      }
+    },
+    {
+      "detector": "ast_detector",
+      "file": "D:\\ai-cicd-security-tool\\backend\\repo\\miner_loader.py",
+      "id": "suspicious_import",
+      "type": "ast",
+      "score": 1,
+      "description": "Import requests"
+    },
+    {
+      "detector": "ast_detector",
+      "file": "D:\\ai-cicd-security-tool\\backend\\repo\\miner_loader.py",
+      "id": "suspicious_subprocess",
+      "type": "ast",
+      "score": 6,
+      "description": "Use of subprocess/os system call: Popen"
+    },
+    {
+      "detector": "ast_detector",
+      "file": "D:\\ai-cicd-security-tool\\backend\\repo\\miner_loader.py",
+      "id": "suspicious_subprocess",
+      "type": "ast",
+      "score": 6,
+      "description": "Use of subprocess/os system call: Popen"
+    },
+    {
+      "detector": "entropy_detector",
+      "file": "D:\\ai-cicd-security-tool\\backend\\repo\\miner_loader.py",
+      "id": "high_entropy",
+      "type": "entropy",
+      "score": 7,
+      "description": "High entropy file (possible encoded/obfuscated payload)",
+      "meta": {
+        "entropy": 4.844975563585952
+      }
+    },
+    {
+      "detector": "ast_detector",
+      "file": "D:\\ai-cicd-security-tool\\backend\\repo\\server.py",
+      "id": "suspicious_subprocess",
+      "type": "ast",
+      "score": 6,
+      "description": "Use of subprocess/os system call: call"
+    },
+    {
+      "detector": "entropy_detector",
+      "file": "D:\\ai-cicd-security-tool\\backend\\repo\\server.py",
+      "id": "high_entropy",
+      "type": "entropy",
+      "score": 7,
+      "description": "High entropy file (possible encoded/obfuscated payload)",
+      "meta": {
+        "entropy": 4.8794684170058975
+      }
+    }
+  ],
+  "raw_findings": [
+    {
+      "detector": "ast_detector",
+      "file": "D:\\ai-cicd-security-tool\\backend\\repo\\app.py",
+      "id": "suspicious_eval_exec",
+      "type": "ast",
+      "score": 6,
+      "description": "Use of exec()"
+    },
+    {
+      "detector": "entropy_detector",
+      "file": "D:\\ai-cicd-security-tool\\backend\\repo\\app.py",
+      "id": "high_entropy",
+      "type": "entropy",
+      "score": 7,
+      "description": "High entropy file (possible encoded/obfuscated payload)",
+      "meta": {
+        "entropy": 5.152025377192021
+      }
+    },
+    {
+      "detector": "ast_detector",
+      "file": "D:\\ai-cicd-security-tool\\backend\\repo\\miner_loader.py",
+      "id": "suspicious_import",
+      "type": "ast",
+      "score": 1,
+      "description": "Import requests"
+    },
+    {
+      "detector": "ast_detector",
+      "file": "D:\\ai-cicd-security-tool\\backend\\repo\\miner_loader.py",
+      "id": "suspicious_subprocess",
+      "type": "ast",
+      "score": 6,
+      "description": "Use of subprocess/os system call: Popen"
+    },
+    {
+      "detector": "ast_detector",
+      "file": "D:\\ai-cicd-security-tool\\backend\\repo\\miner_loader.py",
+      "id": "suspicious_subprocess",
+      "type": "ast",
+      "score": 6,
+      "description": "Use of subprocess/os system call: Popen"
+    },
+    {
+      "detector": "entropy_detector",
+      "file": "D:\\ai-cicd-security-tool\\backend\\repo\\miner_loader.py",
+      "id": "high_entropy",
+      "type": "entropy",
+      "score": 7,
+      "description": "High entropy file (possible encoded/obfuscated payload)",
+      "meta": {
+        "entropy": 4.844975563585952
+      }
+    },
+    {
+      "detector": "ast_detector",
+      "file": "D:\\ai-cicd-security-tool\\backend\\repo\\server.py",
+      "id": "suspicious_subprocess",
+      "type": "ast",
+      "score": 6,
+      "description": "Use of subprocess/os system call: call"
+    },
+    {
+      "detector": "entropy_detector",
+      "file": "D:\\ai-cicd-security-tool\\backend\\repo\\server.py",
+      "id": "high_entropy",
+      "type": "entropy",
+      "score": 7,
+      "description": "High entropy file (possible encoded/obfuscated payload)",
+      "meta": {
+        "entropy": 4.8794684170058975
+      }
+    }
+  ],
+  "score": 46,
+  "action": "warn"
+}

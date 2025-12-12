@@ -1,0 +1,445 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Scan Report</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', Roboto, sans-serif;
+        background: #0f172a;
+        color: #e2e8f0;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 30px;
+        margin-bottom: 20px;
+        color: #38bdf8;
+        text-align: center;
+    }
+
+    .meta-box {
+        background: #1e293b;
+        padding: 18px;
+        border-radius: 10px;
+        margin-bottom: 30px;
+        border: 1px solid #334155;
+    }
+
+    .meta-box b {
+        color: #93c5fd;
+    }
+
+    /* Grid of cards */
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 18px;
+    }
+
+    .card {
+        background: #1e293b;
+        border-radius: 10px;
+        padding: 16px;
+        cursor: pointer;
+        border: 1px solid #334155;
+        transition: 0.25s;
+    }
+
+    .card:hover {
+        transform: translateY(-4px);
+        border-color: #60a5fa;
+    }
+
+    .ml-card {
+        border-left: 6px solid #f59e0b !important;
+    }
+
+    .static-card {
+        border-left: 6px solid #6366f1 !important;
+    }
+
+    .card-title {
+        font-size: 18px;
+        color: #f8fafc;
+        margin-bottom: 6px;
+    }
+
+    .attack-type {
+        font-size: 13px;
+        color: #fbbf24;
+        margin-bottom: 10px;
+    }
+
+    .card-sub {
+        font-size: 14px;
+        color: #94a3b8;
+        margin-bottom: 10px;
+    }
+
+    .score-badge {
+        display: inline-block;
+        padding: 4px 8px;
+        font-size: 13px;
+        border-radius: 6px;
+        color: white;
+    }
+
+    .high { background: #ef4444; }
+    .medium { background: #f59e0b; }
+    .low { background: #3b82f6; }
+
+    /* Modal */
+    .modal-bg {
+        display: none;
+        position: fixed;
+        top: 0; left: 0;
+        height: 100%;
+        width: 100%;
+        background: rgba(0,0,0,0.7);
+        justify-content: center;
+        align-items: center;
+        z-index: 999;
+    }
+
+    .modal {
+        background: #1e293b;
+        width: 90%;
+        max-width: 650px;
+        padding: 25px;
+        border-radius: 12px;
+        border: 1px solid #475569;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+    }
+
+    .modal h2 {
+        margin-top: 0;
+        color: #38bdf8;
+    }
+
+    .attack-badge {
+        display: inline-block;
+        background: #f59e0b;
+        padding: 4px 10px;
+        border-radius: 8px;
+        margin-bottom: 12px;
+        font-size: 13px;
+        color: #1e1e1e;
+    }
+
+    .close-btn {
+        float: right;
+        background: #ef4444;
+        padding: 5px 10px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+    pre {
+        background: #0f172a;
+        padding: 12px;
+        border-radius: 8px;
+        overflow-x: auto;
+        border: 1px solid #334155;
+        color: #e2e8f0;
+    }
+
+</style>
+
+<script>
+function showModal(index) {
+    document.getElementById("modal-" + index).style.display = "flex";
+}
+function closeModal(index) {
+    document.getElementById("modal-" + index).style.display = "none";
+}
+</script>
+
+</head>
+<body>
+
+<h1>CI/CD Integrity Scan Report</h1>
+
+<div class="meta-box">
+    <p><b>Path:</b> D:\ai-cicd-security-tool\backend\repo</p>
+    <p><b>Score:</b> 46
+    
+        <span class="score-badge medium">WARN</span>
+    
+    </p>
+</div>
+
+<div class="cards">
+
+    <div class="card static-card"
+         onclick="showModal(1)">
+
+        <div class="card-title">ast_detector</div>
+        <div class="card-sub">suspicious_eval_exec</div>
+
+        
+
+        <span class="score-badge 
+            medium
+            ">
+            score: 6
+        </span>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal-bg" id="modal-1">
+        <div class="modal">
+
+            <span class="close-btn" onclick="closeModal(1)">Close</span>
+
+            <h2>ast_detector — suspicious_eval_exec</h2>
+
+            
+
+            <p><b>File:</b> D:\ai-cicd-security-tool\backend\repo\app.py</p>
+            <p>Use of exec()</p>
+
+            
+        </div>
+    </div>
+
+    <div class="card static-card"
+         onclick="showModal(2)">
+
+        <div class="card-title">entropy_detector</div>
+        <div class="card-sub">high_entropy</div>
+
+        
+
+        <span class="score-badge 
+            high
+            ">
+            score: 7
+        </span>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal-bg" id="modal-2">
+        <div class="modal">
+
+            <span class="close-btn" onclick="closeModal(2)">Close</span>
+
+            <h2>entropy_detector — high_entropy</h2>
+
+            
+
+            <p><b>File:</b> D:\ai-cicd-security-tool\backend\repo\app.py</p>
+            <p>High entropy file (possible encoded/obfuscated payload)</p>
+
+            
+            <h3>Metadata</h3>
+            <pre>{'entropy': 5.152025377192021}</pre>
+            
+        </div>
+    </div>
+
+    <div class="card static-card"
+         onclick="showModal(3)">
+
+        <div class="card-title">ast_detector</div>
+        <div class="card-sub">suspicious_import</div>
+
+        
+
+        <span class="score-badge 
+            low">
+            score: 1
+        </span>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal-bg" id="modal-3">
+        <div class="modal">
+
+            <span class="close-btn" onclick="closeModal(3)">Close</span>
+
+            <h2>ast_detector — suspicious_import</h2>
+
+            
+
+            <p><b>File:</b> D:\ai-cicd-security-tool\backend\repo\miner_loader.py</p>
+            <p>Import requests</p>
+
+            
+        </div>
+    </div>
+
+    <div class="card static-card"
+         onclick="showModal(4)">
+
+        <div class="card-title">ast_detector</div>
+        <div class="card-sub">suspicious_subprocess</div>
+
+        
+
+        <span class="score-badge 
+            medium
+            ">
+            score: 6
+        </span>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal-bg" id="modal-4">
+        <div class="modal">
+
+            <span class="close-btn" onclick="closeModal(4)">Close</span>
+
+            <h2>ast_detector — suspicious_subprocess</h2>
+
+            
+
+            <p><b>File:</b> D:\ai-cicd-security-tool\backend\repo\miner_loader.py</p>
+            <p>Use of subprocess/os system call: Popen</p>
+
+            
+        </div>
+    </div>
+
+    <div class="card static-card"
+         onclick="showModal(5)">
+
+        <div class="card-title">ast_detector</div>
+        <div class="card-sub">suspicious_subprocess</div>
+
+        
+
+        <span class="score-badge 
+            medium
+            ">
+            score: 6
+        </span>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal-bg" id="modal-5">
+        <div class="modal">
+
+            <span class="close-btn" onclick="closeModal(5)">Close</span>
+
+            <h2>ast_detector — suspicious_subprocess</h2>
+
+            
+
+            <p><b>File:</b> D:\ai-cicd-security-tool\backend\repo\miner_loader.py</p>
+            <p>Use of subprocess/os system call: Popen</p>
+
+            
+        </div>
+    </div>
+
+    <div class="card static-card"
+         onclick="showModal(6)">
+
+        <div class="card-title">entropy_detector</div>
+        <div class="card-sub">high_entropy</div>
+
+        
+
+        <span class="score-badge 
+            high
+            ">
+            score: 7
+        </span>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal-bg" id="modal-6">
+        <div class="modal">
+
+            <span class="close-btn" onclick="closeModal(6)">Close</span>
+
+            <h2>entropy_detector — high_entropy</h2>
+
+            
+
+            <p><b>File:</b> D:\ai-cicd-security-tool\backend\repo\miner_loader.py</p>
+            <p>High entropy file (possible encoded/obfuscated payload)</p>
+
+            
+            <h3>Metadata</h3>
+            <pre>{'entropy': 4.844975563585952}</pre>
+            
+        </div>
+    </div>
+
+    <div class="card static-card"
+         onclick="showModal(7)">
+
+        <div class="card-title">ast_detector</div>
+        <div class="card-sub">suspicious_subprocess</div>
+
+        
+
+        <span class="score-badge 
+            medium
+            ">
+            score: 6
+        </span>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal-bg" id="modal-7">
+        <div class="modal">
+
+            <span class="close-btn" onclick="closeModal(7)">Close</span>
+
+            <h2>ast_detector — suspicious_subprocess</h2>
+
+            
+
+            <p><b>File:</b> D:\ai-cicd-security-tool\backend\repo\server.py</p>
+            <p>Use of subprocess/os system call: call</p>
+
+            
+        </div>
+    </div>
+
+    <div class="card static-card"
+         onclick="showModal(8)">
+
+        <div class="card-title">entropy_detector</div>
+        <div class="card-sub">high_entropy</div>
+
+        
+
+        <span class="score-badge 
+            high
+            ">
+            score: 7
+        </span>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal-bg" id="modal-8">
+        <div class="modal">
+
+            <span class="close-btn" onclick="closeModal(8)">Close</span>
+
+            <h2>entropy_detector — high_entropy</h2>
+
+            
+
+            <p><b>File:</b> D:\ai-cicd-security-tool\backend\repo\server.py</p>
+            <p>High entropy file (possible encoded/obfuscated payload)</p>
+
+            
+            <h3>Metadata</h3>
+            <pre>{'entropy': 4.8794684170058975}</pre>
+            
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

